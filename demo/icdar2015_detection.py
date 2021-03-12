@@ -13,7 +13,7 @@ from detectron2.data.detection_utils import read_image
 from detectron2.utils.logger import setup_logger
 
 from predictor import VisualizationDemo
-from cal_recal.script import cal_recall_precision_f1
+from cal_recall.script import cal_recall_precison_f1
 
 # constants
 WINDOW_NAME = "COCO detections"
@@ -66,7 +66,7 @@ def get_parser():
 
     parser.add_argument(
         "--gt_path",
-        default="./icdar2015/test_gt",
+        default="../icdar2015/test_gt",
         type=str,
         help="the folder of icdar2015 test ground truth"
     )
@@ -143,6 +143,7 @@ if __name__ == "__main__":
     img_count = 0
     for i in tqdm.tqdm(os.listdir(test_images_path)):
         # print(i)
+        img_name = i.split('.')[0]
         i = os.path.join(test_images_path, i)
 
         img = cv2.imread(i)
@@ -150,17 +151,16 @@ if __name__ == "__main__":
 
         prediction, vis_output, polygons = detection_demo.run_on_image(img)
 
-        img_name = os.path.basename(i)
-        img_save_path = os.path.join(save_img_folder, img_name + '.jpg')
-        
-        txt_save_path = os.path.join(save_txt_folder, img_name + '.txt')
+        img_save_path = os.path.join(save_img_folder, 'res_' + img_name + '.jpg')
+        txt_save_path = os.path.join(save_txt_folder, 'res_' + img_name + '.txt')
+
         save_result_to_txt(txt_save_path,prediction,polygons)
 
         # print("Time: {:.2f} s / img".format(time.time() - start_time))
         vis_output.save(img_save_path)
         img_count += 1
     print("Average Time: {:.2f} s /img".format((time.time() - start_time_all) / img_count))
-    result = cal_recall_precision_f1(gt=args.gt_path, result_path=save_txt_folder)
+    result = cal_recall_precison_f1(gt_path=args.gt_path, result_path=save_txt_folder)
     print(result)
 
 
