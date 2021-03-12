@@ -13,6 +13,7 @@ from detectron2.data.detection_utils import read_image
 from detectron2.utils.logger import setup_logger
 
 from predictor import VisualizationDemo
+from cal_recal.script import cal_recall_precision_f1
 
 # constants
 WINDOW_NAME = "COCO detections"
@@ -63,6 +64,13 @@ def get_parser():
         "If not given, will show output in an OpenCV window.",
     )
 
+    parser.add_argument(
+        "--gt_path",
+        default="./icdar2015/test_gt",
+        type=str,
+        help="the folder of icdar2015 test ground truth"
+    )
+    
     parser.add_argument(
         "--confidence-threshold",
         type=float,
@@ -120,7 +128,16 @@ if __name__ == "__main__":
     detection_demo = VisualizationDemo(cfg)
 
     test_images_path = args.input
-    output_path = args.output
+    save_path = args.output
+    
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
+    save_img_folder = os.path.join(save_path, 'img')
+    if not os.path.exists(save_img_folder):
+        os.makedirs(save_img_folder)
+    save_txt_folder = os.path.join(save_path, 'result')
+    if not os.path.exists(save_txt_folder):
+        os.makedirs(save_txt_folder)
 
     start_time_all = time.time()
     img_count = 0
@@ -134,14 +151,16 @@ if __name__ == "__main__":
         prediction, vis_output, polygons = detection_demo.run_on_image(img)
 
         img_name = os.path.basename(i)
-        img_save_path = os.path.join(output_path, img_name + '.jpg')
+        img_save_path = os.path.join(save_img_folder, img_name + '.jpg')
         
-        txt_save_path = os.path.join(output_path, img_name + '.txt')
+        txt_save_path = os.path.join(save_txt_folder, img_name + '.txt')
         save_result_to_txt(txt_save_path,prediction,polygons)
 
         # print("Time: {:.2f} s / img".format(time.time() - start_time))
         vis_output.save(img_save_path)
         img_count += 1
     print("Average Time: {:.2f} s /img".format((time.time() - start_time_all) / img_count))
+    result = cal_recall_precision_f1(gt=args.gt_path, result_path=save_txt_folder)
+    print(result)
 
 
