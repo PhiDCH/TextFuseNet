@@ -1,7 +1,7 @@
 - [x] add test_img, result, pretrain folder
 - [x] change file demo/demo.py demo/icdar2015_detection.py config/ocr/icdar2015_101_FPN.yaml
-- [x] add evaluation 
-
+- [x] add cal_recall folder to compute f-score
+- [x] change file demo/icdar2015_detection.py
 
 # TextFuseNet: Scene Text Detection with Richer Fused Features
 This software implements TextFuseNet: Scene Text Detection with Richer Fused Features in PyTorch. For more details, please refer to our paper https://www.ijcai.org/Proceedings/2020/72.
