@@ -1,5 +1,6 @@
 - [x] add test_img, result, pretrain folder
-- [x] change f 
+- [x] change file demo/demo.py demo/icdar2015_detection.py config/ocr/icdar2015_101_FPN.yaml
+- [x] add evaluation 
 
 
 # TextFuseNet: Scene Text Detection with Richer Fused Features
