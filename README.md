@@ -3,6 +3,7 @@
 - [x] add cal_recall folder (from https://github.com/WenmuZhou/PAN.pytorch/tree/master/utils/cal_recall) to compute f-score
 - [x] change file cal_recall/rrc_evaluation_funcs.py
 - [x] change file demo/icdar2015_detection.py
+- [x] add a notebook
 
 # TextFuseNet: Scene Text Detection with Richer Fused Features
 This software implements TextFuseNet: Scene Text Detection with Richer Fused Features in PyTorch. For more details, please refer to our paper https://www.ijcai.org/Proceedings/2020/72.
