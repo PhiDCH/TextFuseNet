@@ -2,7 +2,7 @@ _BASE_: "./Base-RCNN-FPN.yaml"
 MODEL:
   MASK_ON: True
   TEXTFUSENET_MUTIL_PATH_FUSE_ON: True
-  WEIGHTS: "./out_dir_r101/icdar2015_model/model_ic15_r101.pth"
+  WEIGHTS: "pretrain/textfuse-ic15.pth"
   PIXEL_STD: [57.375, 57.120, 58.395]
   RESNETS:
     STRIDE_IN_1X1: False  # this is a C2 model
@@ -32,4 +32,4 @@ INPUT:
   MAX_SIZE_TEST: 3000
   
 
-OUTPUT_DIR: "./out_dir_r101/icdar2015_model/"
+OUTPUT_DIR: "pretrain/"
