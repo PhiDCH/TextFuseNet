@@ -51,8 +51,8 @@ def get_parser():
 
     parser.add_argument(
         "--input",
-        default="./input_images/*.jpg",
-        nargs="+",
+        default="./input_images",
+        type=str,
         help="the folder of icdar2015 test images"
     )
 
@@ -124,19 +124,22 @@ if __name__ == "__main__":
 
     start_time_all = time.time()
     img_count = 0
-    for i in glob.glob(test_images_path):
-        print(i)
-        img_name = os.path.basename(i)
-        img_save_path = output_path + img_name.split('.')[0] + '.jpg'
+    for i in tqdm.tqdm(os.listdir(test_images_path)):
+        # print(i)
+        i = os.path.join(test_images_path, i)
+
         img = cv2.imread(i)
         start_time = time.time()
 
         prediction, vis_output, polygons = detection_demo.run_on_image(img)
 
-        txt_save_path = output_path + 'res_' + img_name.split('.')[0] + '.txt'
+        img_name = os.path.basename(i)
+        img_save_path = os.path.join(output_path, img_name + '.jpg')
+        
+        txt_save_path = os.path.join(output_path, img_name + '.txt')
         save_result_to_txt(txt_save_path,prediction,polygons)
 
-        print("Time: {:.2f} s / img".format(time.time() - start_time))
+        # print("Time: {:.2f} s / img".format(time.time() - start_time))
         vis_output.save(img_save_path)
         img_count += 1
     print("Average Time: {:.2f} s /img".format((time.time() - start_time_all) / img_count))
