@@ -1,1 +1,6 @@
-
+# google drive id of pre train model
+model_ctw_r101.pth  1dOxJP-OuoGH7P817OWySxVWKMAxSHxpT
+model_ic13_r101.pth 1VF88cnYCY28JBk2EHUMF9dKHCU_3SWUi
+model_ic15_r101.pth 1OWQUxaHpEoWoC6TzArgsz3aVvkJhJhej
+model_tt_r101.pth   124Jb4TcxP0db1MbyawyIbD5MoWpbcCgX
+model_syn_r101_pretrain.pth 10n7Hz1H6WIn3EKJcgaRtSvyhysYnmsvk
