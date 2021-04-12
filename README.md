@@ -1,4 +1,4 @@
-- [x] add test_img, result, pretrain folder
+- [x] add pretrain folder
 - [x] change file demo/demo.py demo/icdar2015_detection.py config/ocr/icdar2015_101_FPN.yaml
 - [x] add cal_recall folder (from https://github.com/WenmuZhou/PAN.pytorch/tree/master/utils/cal_recall) to compute f-score
 - [x] change file cal_recall/rrc_evaluation_funcs.py
