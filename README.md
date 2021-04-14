@@ -12,7 +12,7 @@
 !python -m pip install Pillow==6.2\
 !pip install fvcore-master.zip\
 !python setup.py build develop\
-!pip install Polygon3\
+!pip install Polygon3
 
 
 # TextFuseNet: Scene Text Detection with Richer Fused Features
