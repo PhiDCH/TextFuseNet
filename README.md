@@ -7,7 +7,7 @@
 
 # Setup for run get_img_notext.py
 !gdown --id 1OWQUxaHpEoWoC6TzArgsz3aVvkJhJhej -O pretrain/textfuse-ic15.pth \
-!pip install torch==1.3.1+cu100 torchvision==0.4.2+cu100 -f https://download.pytorch.org/whl/torch_stable.html\
+!pip install torch==1.3.1+cu100 torchvision==0.4.2+cu100 -f https://download.pytorch.org/whl/torch_stable.html \
 !pip install opencv-python tensorboard yacs tqdm termcolor tabulate matplotlib cloudpickle wheel pycocotools\
 !python -m pip install Pillow==6.2\
 !pip install fvcore-master.zip\
