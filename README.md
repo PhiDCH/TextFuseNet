@@ -6,13 +6,13 @@
 - [x] add a notebook
 
 # Setup for run get_img_notext.py
-!gdown --id 1OWQUxaHpEoWoC6TzArgsz3aVvkJhJhej -O pretrain/textfuse-ic15.pth
-!pip install torch==1.3.1+cu100 torchvision==0.4.2+cu100 -f https://download.pytorch.org/whl/torch_stable.html
-!pip install opencv-python tensorboard yacs tqdm termcolor tabulate matplotlib cloudpickle wheel pycocotools
-!python -m pip install Pillow==6.2
-!pip install fvcore-master.zip
-!python setup.py build develop
-!pip install Polygon3
+!gdown --id 1OWQUxaHpEoWoC6TzArgsz3aVvkJhJhej -O pretrain/textfuse-ic15.pth \
+!pip install torch==1.3.1+cu100 torchvision==0.4.2+cu100 -f https://download.pytorch.org/whl/torch_stable.html\
+!pip install opencv-python tensorboard yacs tqdm termcolor tabulate matplotlib cloudpickle wheel pycocotools\
+!python -m pip install Pillow==6.2\
+!pip install fvcore-master.zip\
+!python setup.py build develop\
+!pip install Polygon3\
 
 
 # TextFuseNet: Scene Text Detection with Richer Fused Features
